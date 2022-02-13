@@ -4,8 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="archieves, brh">
-    <meta name="description" content="brh">
+    <meta name="keywords" content="Github使用指南, brh">
+    <meta name="description" content="&amp;lt;!–&amp;gt;
+&amp;lt;!–&amp;gt;
+Github使用指南本文希望以简洁易懂的形式介绍Github的各种使用方法和功能
+详细请阅读官方文档
+一、如何稳定地上Github二、术语Repository：仓库，存放项目的地方
+Issues：">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>archieves | brh</title>
+    <title>Github使用指南 | brh</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -309,12 +314,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">archieves</h1>
+                    <h1 class="description center-align post-title">Github使用指南</h1>
                 </div>
             </div>
         </div>
@@ -428,12 +433,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/github/">
+                                <span class="chip bg-color">github</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/how-to%E7%B3%BB%E5%88%97/" class="post-category">
+                                how-to系列
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -442,28 +460,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-20
+                    2022-02-08
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-01-20
+                    2022-02-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
 
@@ -486,7 +504,55 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <p>&lt;!–&gt;<br><img src="dog.jpg" alt="相对路径图片" style="zoom:33%;" /></p>
+<p>&lt;!–&gt;</p>
+<h1 id="Github使用指南"><a href="#Github使用指南" class="headerlink" title="Github使用指南"></a>Github使用指南</h1><p>本文希望以简洁易懂的形式介绍Github的各种使用方法和功能</p>
+<p>详细请阅读官方文档</p>
+<h2 id="一、如何稳定地上Github"><a href="#一、如何稳定地上Github" class="headerlink" title="一、如何稳定地上Github"></a>一、如何稳定地上Github</h2><h2 id="二、术语"><a href="#二、术语" class="headerlink" title="二、术语"></a>二、术语</h2><p><strong>Repository</strong>：仓库，存放项目的地方</p>
+<p><strong>Issues</strong>：问题</p>
+<p><strong>Star</strong>：点赞</p>
+<p><strong>Fork</strong>：拉分支，在一个项目的基础上修改时，通过Fork这个项目，复制一个完成相同且独立的项目到我们的 GitHub 账号之中。之后就可以在自己复制的项目中修改了。</p>
+<p><strong>Pull Request</strong>：提交请求，Fork完一个项目并修改后，可以对原项目的拥有者提出一个Pull请求，审核完毕之后，修改就会合并到原项目中</p>
+<p><strong>Merge</strong>：合并，即上述的合并</p>
+<p><strong>Watch</strong>：观察，Watch了一个项目之后，能在第一时候收到该项目的更新通知。</p>
+<h2 id="三、Git常用使用命令"><a href="#三、Git常用使用命令" class="headerlink" title="三、Git常用使用命令"></a>三、Git常用使用命令</h2><p>Github是基于版本控制系统Git的，本文不介绍怎么装<br>（本文基于git version 2.34.1.windows.1，详情请查看官方使用文档）</p>
+<p>打开一个文件夹，右键Git Bash Here，可以打开Git Bash命令行窗口，下面所有操作都是在此窗口进行：</p>
+<p>首先应该做的是让Git认识你，输入：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config --global user.name <span class="token string">"Your Name Comes Here"</span>
+<span class="token function">git</span> config --global user.email you@yourdomain.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><strong>git init</strong>：初始化Git仓库，将当前文件夹变成空的仓库（repository）</p>
+<p><strong>git status</strong>：查看仓库状态</p>
+<p><strong>git add file1 file2 file3</strong>：将位于此文件夹的若干文件加入临时缓冲区中</p>
+<p>**git commit -m “some information”**：将临时缓冲区的文件提交到仓库，并且记录一则信息</p>
+<p><strong>git commit -a</strong>：跳过临时缓冲区，直接将原有文件的所有改动提交到仓库，<em>注意：这不会提交新文件</em></p>
+<p><strong>git log</strong>：打印提交日志</p>
+<p><strong>git branch</strong>：查看仓库分支情况，在分支名前通过*表明当前位置</p>
+<p><strong>git branch newBranchName</strong>：建立新分支newBranchName</p>
+<p><strong>git checkout anotherBranchName</strong>：切换到anotherBranchName分支</p>
+<p><strong>git checkout -b newBranchName</strong>：建立新分支newBranchName的同时切换到该分支</p>
+<p><strong>git merge anotherBranchName</strong>：将anotherBranchName分支与当前所在分支合并</p>
+<p><strong>git branch -d anotherBranchName &amp; git branch -D anotherBranchName</strong>：将anotherBranchName分支删除，如果它未与master分支合并，则前者指令无法删除，需要后者指令强制删除</p>
+<p><strong>git help -a</strong>：git 指令简短说明</p>
+<h2 id="四、通过Git访问Github"><a href="#四、通过Git访问Github" class="headerlink" title="四、通过Git访问Github"></a>四、通过Git访问Github</h2><p>假设已经完成ssh绑定，这里仅介绍用法</p>
+<p>在Github网站的仓库页面中选择code，复制如下内容（就是当前网址加后缀.git）<br><img src="1.jpg" alt="code clone"  /></p>
+<p><strong>git clone <a target="_blank" rel="noopener" href="https://github.com/userName/repoName.git">https://github.com/userName/repoName.git</a></strong>：<br>将userName的repoName复制到本地（位置即是当前文件夹），此后就可以在本地进行修改</p>
+<p><strong>git remote add whateverName <a target="_blank" rel="noopener" href="https://github.com/userName/repoName.git">https://github.com/userName/repoName.git</a></strong>：<br>在本地init一个新仓库之后，将其关联一个命名为whateverName（一般命名为origin，<em>注意：这个和repoName无关</em>）的远程仓库，它的地址是<a target="_blank" rel="noopener" href="https://github.com/userName/repoName.git">https://github.com/userName/repoName.git</a></p>
+<p><strong>git pull whateverName master</strong>：同步whateverName远程仓库和本地仓库的master分支</p>
+<p><strong>git push whateverName master</strong>：将本地仓库提交到你的whateverName远程仓库master分支</p>
+<h2 id="五、Gitee下载"><a href="#五、Gitee下载" class="headerlink" title="五、Gitee下载"></a>五、Gitee下载</h2><p>由于Github下载速度感人，可以通过国内的代码托管平台Gitee导入Github平台的仓库<br><a target="_blank" rel="noopener" href="https://gitee.com/projects/import/url">https://gitee.com/projects/import/url</a><br>然后再pull或者clone<br><img src="2.jpg" alt="gitee import"  /></p>
+<p>也可以用Git访问Gitee，和通过Git访问Github同理，只是需要<strong>git remote add</strong>一个新的远程仓库，并且在push和pull时指定那个仓库即可</p>
+<h2 id="六、Actions"><a href="#六、Actions" class="headerlink" title="六、Actions"></a>六、Actions</h2><p>参照<a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html">https://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html</a><br>GitHub 允许开发者把每个操作写成独立的脚本文件，存放到代码仓库，使得其他开发者可以引用，这就是GitHub Actions<br>GitHub Actions 的配置文件叫做 workflow 文件，存放在代码仓库的.github/workflows目录，可以通过它配置任务触发条件、虚拟机环境、运行步骤……</p>
+<h2 id="通过Github写博客"><a href="#通过Github写博客" class="headerlink" title="通过Github写博客"></a>通过Github写博客</h2><p>Github提供pages服务，它独立地运行在<a target="_blank" rel="noopener" href="http://github.io/">http://github.io</a> 域名下<br>创建以 username.github.io 命名的仓库，在里面储存html等文件，就可以生成同域名的网页了（打开速度感人）<br>以本网站为例</p>
+<ul>
+<li><strong>下载node.js</strong>， 脚本语言JavaScript需要一个解析器才能运行，写入html的js语言，浏览器是它的解析器；而对于需要独立运行的JS，nodejs就是一个解析器<br>运行在node.js中的js的用途是操作磁盘文件或搭建http服务器</li>
+<li><strong>通过npm安装模块</strong>，npm是和node.js一起下载的，npm就是JavaScript的包管理工具。类似python中的pip。下面将用它安装hexo等等组件</li>
+<li><strong>通过hexo用markdown语法写html</strong>，相比html，markdown好写得多，hexo是高效的静态站点生成框架，可以直接用markdown语法写博客，而忽略网页的其它细节</li>
+<li><strong>个性化设置</strong>，可以继续安装其它插件，比如本博客的主题hexo-theme-matery</li>
+<li><strong>绑定github</strong>，直到这步，生成的网页都是本地的，通过拓展hexo-deployer-git就可以将生成的html文件上传到username.github.io仓库中</li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -512,7 +578,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://baorunhui.github.io/archieves/index.html">https://baorunhui.github.io/archieves/index.html</a>
+                    <a href="https://baorunhui.github.io/2022/02/08/how-to-use-github/">https://baorunhui.github.io/2022/02/08/how-to-use-github/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -549,7 +615,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/github/">
+                                    <span class="chip bg-color">github</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -721,18 +791,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/archieves/index.html">
+                <a href="/2022/02/12/auto-report/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="archieves">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="自动健康打卡">
                         
-                        <span class="card-title">archieves</span>
+                        <span class="card-title">自动健康打卡</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -742,9 +811,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-20
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-12
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -753,7 +822,18 @@
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/github/">
+                        <span class="chip bg-color">github</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -761,16 +841,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/archieves/index.html">
+                <a href="/2022/01/20/hello-world/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="archieves">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="hello_world">
                         
-                        <span class="card-title">archieves</span>
+                        <span class="card-title">hello_world</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -791,7 +871,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
