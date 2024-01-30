@@ -1,0 +1,2045 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="ai homework, brh">
+    <meta name="description" content="题目搬运一下人工智能的实验作业，有些题目还是思考了很久的，也汇聚了很多同学的想法。如果读者有其它想法欢迎评论：
+
+题目一：astar 搜索对于一个初始的随机 01 方阵，每次可以将一个 L 型区域的三个数字的 01 翻转，目标状态为全部为 ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>ai homework | brh</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">brh</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">brh</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">ai homework</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-08-07
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-08-07
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    7.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    28 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>搬运一下人工智能的实验作业，有些题目还是思考了很久的，也汇聚了很多同学的想法。如果读者有其它想法欢迎评论：</p>
+<ul>
+<li>题目一：astar 搜索<br>对于一个初始的随机 01 方阵，每次可以将一个 L 型区域的三个数字的 01 翻转，目标状态为全部为 0 的方阵，问以什么步骤翻转能使翻转次数最少<pre class="line-numbers language-none"><code class="language-none">1 1 1        0 0 1       0 1 0       0 0 0
+1 1 0 --&gt;&gt;   1 0 0 --&gt;&gt;  1 1 0 --&gt;&gt;  0 0 0 (解锁成功)
+0 0 0        0 0 0       0 0 0       0 0 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li>题目二：CSP 约束满足问题<br>为学校的宿管阿姨安排⼀个值班表，以满⾜给定的约束条件，并尽可能满⾜阿姨们的轮班请求</li>
+</ul>
+<p>详细题目见文档：</p>
+<p><a href="exp.pdf" class='download' download="exp">ai homework.pdf</a></p>
+<h2 id="exp1-1"><a href="#exp1-1" class="headerlink" title="exp1.1"></a>exp1.1</h2><h3 id="启发式函数选择"><a href="#启发式函数选择" class="headerlink" title="启发式函数选择"></a>启发式函数选择</h3><h4 id="不包含局部信息的启发式函数"><a href="#不包含局部信息的启发式函数" class="headerlink" title="不包含局部信息的启发式函数"></a>不包含局部信息的启发式函数</h4><ul>
+<li><p>一个显然的启发式函数是$h_1=\lceil\frac{1的总数}{3}\rceil$</p>
+<p>  它实际上把本题松弛到了 <em>每次可以翻转锁盘上的任意1、2或3个数</em> ，比原题的要求低了很多，所以是<strong>可采纳的</strong></p>
+<p>  下面考虑<strong>证明其一致性</strong>：<br>设当前局面为$n$，代价 $h_1(n)=\lceil\frac{n中1的总数}{3}\rceil$，下一步实际能做的是翻转一个L形，到达局面$n’$。它可能把3个1翻转到0，因此 $h_1(n’)=\lceil\frac{n中1的总数-3}{3}\rceil=\lceil\frac{n中1的总数}{3}\rceil-1$ ；也有可能把几个1翻转到0并把几个0翻转到1，那么此时 $h_1(n’)\geq\lceil\frac{n中1的总数}{3}\rceil-1$<br>综上有 $h_1(n’)+1\geq h_1(n)$，满足三角不等式，故有一致性</p>
+</li>
+<li><p>同理$h_2=\frac{1的总数}{3}$也是一个启发式<br>显然$h_2\leq h_1$，$h_1$已然是可采纳的，那么$h_2$也是<strong>可采纳的</strong>。同理也可以证明$h_2$的<strong>一致性</strong></p>
+</li>
+</ul>
+<p>比较$h_1$与$h_2$的优劣：<br>$h_1$更大，所以理论上会更占优势。但是$h_1$的取整导致它可能对细微的变化不够敏感：如果某一节点将要展开的子节点中1的总数为28、29、30，那么$h_1$将看不出它们之间有什么区别，从而随便选择一个子节点展开。而$h_2$可以区分它们的好坏。</p>
+<h4 id="包含局部信息的启发式函数"><a href="#包含局部信息的启发式函数" class="headerlink" title="包含局部信息的启发式函数"></a>包含局部信息的启发式函数</h4><p>以上两个启发式都是翻转锁盘上的任意位置，这和原问题的L形约束相差较远</p>
+<p>下面这种分散的情况期望用一次操作解决就太过乐观了。所以需要观察1的排布是否有局部性</p>
+<pre class="line-numbers language-none"><code class="language-none">1 0 0 0
+0 0 0 0
+0 0 0 1
+1 0 0 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>下面这种虽然集中在一起，但是由于不是L形，也不能期望用一次操作解决。所以要合理定义局部，不能太大或太小</p>
+<pre class="line-numbers language-none"><code class="language-none">0 0 0 0
+0 1 1 1
+0 0 0 0
+0 0 0 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>只有这种局部性才是能够一次操作解决的：</p>
+<pre class="line-numbers language-none"><code class="language-none">0 0 0 0
+0 1 1 0
+0 1 0 0
+0 0 0 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>考虑用<strong>尽可能少</strong>的2×2的方块来覆盖锁盘上所有的1，方块之间可以重叠，此时方块的数量定义为$h_3$</p>
+<p>上面的例子中$h_3$的值分别为3、2、1<br>而譬如</p>
+<pre class="line-numbers language-none"><code class="language-none">0 1 0
+1 1 1
+1 1 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>$h_3$值为2，两个方块重叠了一部分，并且这也是实际的值</p>
+<p>下面<strong>证明它是可采纳的</strong>：<br>它把原问题松弛成了 <em>每一步可以翻转一个2×2方块中的1到4个数字*，那么到最优解的代价就是用尽可能少的方块数量。而之所以称其为松弛，是因为只有 *每一步翻转一个2×2方块中的3个数字</em> 和是原问题的约束一样，而 <em>每一步翻转一个2×2方块中的1、2、4个数字</em> 是在原问题下需要很多步才能办到的事情。所以是可采纳的。</p>
+<p>下面<strong>证明它是一致的</strong>：<br>设当前局面为$n$，下一步实际能做的是翻转一个L形，到达局面$n’$<br>反证其不一致，就是要求 $h_3(n’)+1 &lt; h_3(n)$，即 $h_3(n’) \leq h_3(n)-2$，即翻转一个L形之后，$n’$比$n$少了2个覆盖方块（或者更多）<br>考虑这个L形在$n$中的位置：</p>
+<ul>
+<li>如果它刚好在某个方块上，那么翻转它只会影响该方块，不会少两个覆盖方块</li>
+<li>如果它和两或三个方块都有重叠，那么翻转它时会影响多个方块，但是通过枚举简单情况，可以发现这些被影响的方块不会被同时清零，也即$n’$比$n$最多就少了1个覆盖方块<br>综上得证一致性</li>
+</ul>
+</li>
+<li><p>但是寻找这个最少方块的个数并不是容易的事。可以用简单的贪心算法得出一个较少的解，设该解为$h_4$</p>
+<pre class="line-numbers language-none"><code class="language-none">输入：初始锁盘M
+输出：方块个数num
+
+num &#x3D; 0
+repeat:
+    尝试2*2方块在M中的所有摆放情况，得到覆盖最大1的个数max_n和位置loc
+    if max_n &#x3D;&#x3D; 0
+        return num
+    else
+        num &#x3D; num + 1
+        将loc内所有元素变为0，更新M
+    重置max_n和loc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这个算法在<code>尝试</code>步骤用时$O(n^2)$，总共循环次数$O(方块个数)$，总占用空间$O(n^2)$，可以说计算代价相当小了</p>
+<p>可以找到例子说明$h_4$并<strong>不可采纳</strong>，比如下面的例子$h_4=3$，$h_3=2$，实际估计代价也是2</p>
+<pre class="line-numbers language-none"><code class="language-none">0 1 1 0
+1 1 1 1
+0 0 0 0
+0 0 0 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>但是对于<strong>大多数情况</strong>来说，$h_4\geq h_3$并不意味着$h_4\geq 实际估计代价$，因为$h_3$确实很小，足以满足$实际估计代价\geq h_4\geq h_3$</p>
+</li>
+</ul>
+<p>比较这些启发式函数在5*5样例上的运行结果：</p>
+<table>
+<thead>
+<tr>
+<th>对input0（5*5）</th>
+<th>$h_1$</th>
+<th>$h_2$</th>
+<th>$h_4$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总展开节点</td>
+<td>789</td>
+<td>2846</td>
+<td>200</td>
+</tr>
+<tr>
+<td>解的步数</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>对input3（5*5）</th>
+<th>$h_1$</th>
+<th>$h_2$</th>
+<th>$h_4$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总展开节点</td>
+<td>3791</td>
+<td>14922</td>
+<td>342</td>
+</tr>
+<tr>
+<td>解的步数</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>对input4（5*5）</th>
+<th>$h_1$</th>
+<th>$h_2$</th>
+<th>$h_4$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总展开节点</td>
+<td>129612</td>
+<td>–</td>
+<td>13502</td>
+</tr>
+<tr>
+<td>解的步数</td>
+<td>9</td>
+<td>–</td>
+<td>9</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>对input5（5*5）</th>
+<th>$h_1$</th>
+<th>$h_2$</th>
+<th>$h_4$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总展开节点</td>
+<td>26751</td>
+<td>27254</td>
+<td>394</td>
+</tr>
+<tr>
+<td>解的步数</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+</tr>
+</tbody></table>
+<p>可以发现$h_4$大约优于$h_1$ 10倍，而$h_2$比$h_1$更差<br>这说明了对于可采纳且一致的启发式，越大的启发式意味着越占优势</p>
+<p>但是这三个启发式在面对更大的图的时候并不管用，需要寻找新的启发式</p>
+<h4 id="不可采纳的启发式"><a href="#不可采纳的启发式" class="headerlink" title="不可采纳的启发式"></a>不可采纳的启发式</h4><p>如果对于比较大的图，追求很快求出一个比较好的解，那么调大启发式（以至于其不可采纳）是一个不错的选择</p>
+<p>如果采用不可采纳的启发式 $2*h_4$ 那么有</p>
+<table>
+<thead>
+<tr>
+<th>$2*h_4$</th>
+<th>input6 (9*9)</th>
+<th>input7 (9*9)</th>
+<th>input8 (10*10)</th>
+<th>input9 (12*12)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总展开节点数</td>
+<td>27</td>
+<td>117</td>
+<td>24</td>
+<td>190</td>
+</tr>
+<tr>
+<td>解的步数</td>
+<td>11</td>
+<td>16</td>
+<td>16</td>
+<td>23</td>
+</tr>
+<tr>
+<td>最优解步数</td>
+<td>11</td>
+<td>14</td>
+<td>16</td>
+<td>23</td>
+</tr>
+</tbody></table>
+<p>可以发现其中有的解的步数和总展开节点数都相差不大的，这说明此时搜索算法向深拓展了很多，而向宽没怎么拓展。这是因为 g+h 中 h 已经大于 g 不少，导致解的深度 g 的惩罚显得不是很厉害。而考虑到这题的性质：无论什么图都是有解的，所以算法可以<em>一条路走到黑</em>，而不用担心进入死胡同</p>
+<p>显然 $ 2 * h_4 $ 的 $2$ 是随便取的，那么可以尝试调参 $\alpha * h_4，\alpha\geq1$ ，以尝试每种input的解的最小步数</p>
+<table>
+<thead>
+<tr>
+<th>$1.5*h_4$</th>
+<th>input6 (9*9)</th>
+<th>input7 (9*9)</th>
+<th>input8 (10*10)</th>
+<th>input9 (12*12)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总展开节点数</td>
+<td>45</td>
+<td>2105</td>
+<td>40</td>
+<td>1759</td>
+</tr>
+<tr>
+<td>解的步数</td>
+<td>11</td>
+<td>16</td>
+<td>16</td>
+<td>23</td>
+</tr>
+<tr>
+<td>最优解步数</td>
+<td>11</td>
+<td>14</td>
+<td>16</td>
+<td>23</td>
+</tr>
+</tbody></table>
+<p><em>可以发现input7和input9的展开节点数显著上升，这暗示了这个启发式的搜索空间明显更大了，也就是前一个启发式漏掉了更多的应该被检查的节点</em></p>
+<p>但是这件事可以做得更细腻一点：<strong>我们可以尝试出一个 $\alpha(M)*h_4$，使得它恰好是当前锁盘$M$的预期代价的一个下界</strong>，其中$\alpha(M)$是锁盘$M$的一个函数，这样A<em>算法的启发式函数就可以*</em>自始至终都满足可采纳性**了<br>关于$\alpha(M)$的选择，有几个观察：</p>
+<ul>
+<li>$对\forall M，\alpha(M)=1$时，$\alpha(M)*h_4$是$M$预期代价的下界，只不过太小了，展开节点数很多</li>
+<li>$\alpha(M)*h_4$越接近$M$的预期代价，则展开节点数越少，所以$\alpha(M)$要尽可能大，但是不能高估预期代价</li>
+<li>$M$越复杂（可以用1的数目做度量），$h_4$与预期代价之间的差额就越大，就可以尝试更大的$\alpha(M)$</li>
+<li>上面这个观察是对平均而言，而对于具体的$M$和$\alpha(M)$，有可能会找到违背可采纳性的反例，所以这个可采纳性是对平均而言的，可以称之为<strong>平均可采纳性</strong></li>
+</ul>
+<p>比如采用$\frac{M中1的总数}{锁盘格子总数}+1$作为$\alpha(M)$，它的值域在$[2,1]$并且满足上述条件</p>
+<h3 id="A-算法"><a href="#A-算法" class="headerlink" title="A*算法"></a>A*算法</h3><h4 id="解的上界"><a href="#解的上界" class="headerlink" title="解的上界"></a>解的上界</h4><p>下面证明任意一个2*2以上大小的锁盘都是有解的，先从一个点的情况考虑：</p>
+<pre class="line-numbers language-none"><code class="language-none">0 0      1 1      1 0      0 0
+1 0  -&gt;  0 0  -&gt;  1 1  -&gt;  0 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>可见在这三次操作里面，左下角的点翻转了3次，其它点翻转了2次。所以只有左下角的点被改变了。<br>那么对于一个任意的棋盘，我们对每个点都如此操作即可</p>
+<p>所以可以得出$解的上界=1的总数*3$</p>
+<h4 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h4><p>对于某个锁盘的局面进行某个翻转时，有可能是将三个0翻转成三个1，这种展开显然是多余的。启发式函数可能对这种情况给与比其它情况更大的惩罚，但是也有可能不会这样。所以需要直接限定不能将三个0翻转成三个1。</p>
+<p>这种带来的剪枝是很可观的：</p>
+<table>
+<thead>
+<tr>
+<th>对input0（5*5） 启发式$h_1$</th>
+<th>剪枝</th>
+<th>不剪枝</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总展开节点</td>
+<td>789</td>
+<td>4330</td>
+</tr>
+<tr>
+<td>解的步数</td>
+<td>5</td>
+<td>5</td>
+</tr>
+</tbody></table>
+<h4 id="算法结构"><a href="#算法结构" class="headerlink" title="算法结构"></a>算法结构</h4><p>首先介绍算法中定义的结构体：<br>矩阵结构体：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">struct</span> <span class="token class-name">Matrix</span><span class="token punctuation">&#123;</span> 
+      vector<span class="token operator">&lt;</span> vector<span class="token operator">&lt;</span><span class="token keyword">bool</span><span class="token operator">></span> <span class="token operator">></span> a<span class="token punctuation">;</span>
+      <span class="token function">Matrix</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+      <span class="token comment">//在p的基础上通过i,j,s变化生成新矩阵，此处i,j,s需要合法，如果此时将三个0翻成三个1，则设useless为true</span>
+      <span class="token function">Matrix</span><span class="token punctuation">(</span>Matrix p<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">,</span> <span class="token keyword">int</span> s<span class="token punctuation">,</span> <span class="token keyword">bool</span> <span class="token operator">&amp;</span>useless<span class="token punctuation">)</span>
+      <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token keyword">bool</span> <span class="token keyword">operator</span><span class="token operator">&lt;</span><span class="token punctuation">(</span>Matrix x<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>它包含成员变量<code>a</code>表示锁盘内容<br>定义了在p的基础上通过i,j,s变化生成新矩阵的构造函数，并且可以判断该变化需不需要剪枝<br>重载了<code>&lt;</code>以使用c++的数据结构</p>
+<p>矩阵状态结构体：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">struct</span> <span class="token class-name">MatrixState</span><span class="token punctuation">&#123;</span> 
+	Matrix m<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> pos<span class="token punctuation">;</span> <span class="token comment">//记录状态编号 </span>
+	<span class="token keyword">int</span> g<span class="token punctuation">;</span> <span class="token comment">//到达此状态移动的步数</span>
+	<span class="token keyword">float</span> h<span class="token punctuation">;</span> <span class="token comment">//预期代价</span>
+	
+	<span class="token function">MatrixState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+        <span class="token comment">//创建新矩阵状态，并按照h_func计算h</span>
+	<span class="token function">MatrixState</span><span class="token punctuation">(</span>Matrix x<span class="token punctuation">,</span> <span class="token keyword">int</span> p<span class="token punctuation">,</span> <span class="token keyword">int</span> t<span class="token punctuation">,</span> <span class="token keyword">float</span> <span class="token punctuation">(</span><span class="token operator">*</span>h_func<span class="token punctuation">)</span><span class="token punctuation">(</span>Matrix M<span class="token punctuation">)</span><span class="token punctuation">)</span>
+	<span class="token keyword">bool</span> <span class="token keyword">operator</span><span class="token operator">&lt;</span><span class="token punctuation">(</span>MatrixState x<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>它是A*算法中的每个节点的类型<br>包含矩阵结构体<code>m</code>，状态编号（回溯解时需要），以及该节点的g和h<br>定义了创建新矩阵状态的构造函数，并且可以指定新矩阵状态计算时的启发式函数</p>
+<p>下面介绍算法流程：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//A*搜索，输入初始矩阵状态M，返回总步数step和最终结果在path中的下标cnt（后续以此回溯解路径）</span>
+<span class="token keyword">void</span> <span class="token function">AstarSearch</span><span class="token punctuation">(</span>MatrixState MS<span class="token punctuation">,</span><span class="token keyword">int</span> <span class="token operator">&amp;</span>step<span class="token punctuation">,</span><span class="token keyword">int</span> <span class="token operator">&amp;</span>cnt<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    set<span class="token operator">&lt;</span>Matrix<span class="token operator">></span> seen<span class="token punctuation">;</span> <span class="token comment">//用于判断状态矩阵是否重复的集合 </span>
+    priority_queue<span class="token operator">&lt;</span>MatrixState<span class="token operator">></span> OPEN<span class="token punctuation">;</span> <span class="token comment">//待展开的队列，按g+h从小到大排序</span>
+    <span class="token comment">//设置初始</span>
+    OPEN<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>MS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    seen<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>MS<span class="token punctuation">.</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    path<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>MS<span class="token punctuation">;</span>
+
+    <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>OPEN<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token comment">//弹出第一个矩阵状态F</span>
+		MatrixState F<span class="token operator">=</span>OPEN<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		OPEN<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//判断终止状态</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>F<span class="token punctuation">.</span>h<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+			step<span class="token operator">=</span>F<span class="token punctuation">.</span>g<span class="token punctuation">;</span>
+			<span class="token keyword">while</span><span class="token punctuation">(</span>path<span class="token punctuation">[</span>cnt<span class="token punctuation">]</span><span class="token punctuation">.</span>h<span class="token punctuation">)</span> cnt<span class="token operator">--</span><span class="token punctuation">;</span>
+                        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"总遍历节点："</span> <span class="token operator">&lt;&lt;</span> count <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+			<span class="token keyword">return</span> <span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+
+		<span class="token comment">//展开所有节点</span>
+        <span class="token comment">//要按s分类，因为每种s对应一些i,j非法</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> s<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> s<span class="token operator">&lt;=</span><span class="token number">4</span><span class="token punctuation">;</span> s<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">int</span> i_start<span class="token punctuation">,</span> i_end<span class="token punctuation">,</span> j_start<span class="token punctuation">,</span> j_end<span class="token punctuation">;</span>
+            <span class="token keyword">switch</span> <span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+            <span class="token punctuation">&#123;</span>
+            <span class="token keyword">case</span> <span class="token number">1</span><span class="token operator">:</span>
+                i_start <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                i_end <span class="token operator">=</span> Msize<span class="token punctuation">;</span>
+                j_start <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                j_end <span class="token operator">=</span> Msize<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>
+                i_start <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                i_end <span class="token operator">=</span> Msize<span class="token punctuation">;</span>
+                j_start <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                j_end <span class="token operator">=</span> Msize<span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token number">3</span><span class="token operator">:</span>
+                i_start <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                i_end <span class="token operator">=</span> Msize<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+                j_start <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                j_end <span class="token operator">=</span> Msize<span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token number">4</span><span class="token operator">:</span>
+                i_start <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                i_end <span class="token operator">=</span> Msize<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+                j_start <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                j_end <span class="token operator">=</span> Msize<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            
+            <span class="token keyword">default</span><span class="token operator">:</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> i_start<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> i_end<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> j_start<span class="token punctuation">;</span> j <span class="token operator">&lt;</span> j_end<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token punctuation">&#123;</span>
+                    <span class="token comment">//一种剪枝：如果当前把三个0翻成三个1，则useless为true</span>
+                    <span class="token keyword">bool</span> useless <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                    <span class="token comment">//展开当前节点</span>
+                    Matrix <span class="token function">new_m</span><span class="token punctuation">(</span>F<span class="token punctuation">.</span>m<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> s<span class="token punctuation">,</span> useless<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token comment">//如果seen集合中没有此矩阵，则更新seen，并插入OPEN队列</span>
+                    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>seen<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span>new_m<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">&#123;</span>
+                        seen<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>new_m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token comment">//此状态的g是父节点F.g+1</span>
+                        MatrixState <span class="token function">new_MS</span><span class="token punctuation">(</span>new_m<span class="token punctuation">,</span> cnt<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> F<span class="token punctuation">.</span>g<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> h1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        OPEN<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>new_MS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token comment">//设置向前查找</span>
+                        path<span class="token punctuation">[</span><span class="token operator">++</span>cnt<span class="token punctuation">]</span><span class="token operator">=</span>new_MS<span class="token punctuation">;</span>
+                        pre<span class="token punctuation">[</span>cnt<span class="token punctuation">]</span><span class="token operator">=</span>F<span class="token punctuation">.</span>pos<span class="token punctuation">;</span>
+                    <span class="token punctuation">&#125;</span>
+                <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>		
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>算法采用c++的set容器<code>seen</code>维护已经看过的矩阵，采用priority_queue实现待展开矩阵状态<code>OPEN</code>的优先队列<br>在用第一个矩阵状态初始设置后，只要<code>OPEN</code>队列没有清空，就弹出其第一个矩阵状态（也即g+h最小的）作为<code>F</code>，如果<code>F</code>是终点则结束，否则展开<code>F</code>的所有子节点<br>在展开时需要对边界处理，因为并非所有ijs都是合法的。如果展开的节点是见过的则不展开，反之将它插入<code>seen</code>和<code>OPEN</code>中</p>
+<p>为了最后能输出解，还需要在此时维护移动过程中产生的状态结构体数组<code>path</code>和每个状态的前一个状态的结构体编号<code>pre</code></p>
+<h4 id="别人的技巧和经验"><a href="#别人的技巧和经验" class="headerlink" title="别人的技巧和经验"></a>别人的技巧和经验</h4><p>在尝试解决大于5*5的锁盘的时候，一开始碍于时间限制只能采用不可采纳的启发式。在这里总结了我身边同学的不可采纳的启发式：</p>
+<ul>
+<li>$\alpha*\lceil\frac{1的总数}{3}\rceil，\alpha&gt;1$<ul>
+<li>据说调整$\alpha$的大小可以得到比较少的展开节点数</li>
+</ul>
+</li>
+<li>$\sum_{i,j}\frac{dis(a_i, a_j)}{2*(1的总数)}$  即所有1的点之间的距离平均<ul>
+<li>其中$a_i, a_j$是那些1的点的坐标，$dis(,)$取哈夫曼距离</li>
+<li>用这个作为启发式，它的值是相当大了。但是它会给1的点分散的图很大的惩罚，以此驱使A*算法先考察1的点集中一些的图。这个想法是好的，因为两个点的距离更近的话，更有可能通过少数几次变化将它们同时解决</li>
+<li>但是这个启发式的解释性很差：<ul>
+<li>两个点之间的距离应该与<em>将它们同时解决的变化数</em>挂钩，而不应该与哈夫曼距离挂钩。当两个点的哈夫曼距离大到一定程度的时候，将它们解决的变化数达到6并且不会再变了 </li>
+<li>多个点中的两两距离比较复杂，真正要考虑的距离可能只是它的一个部分</li>
+</ul>
+</li>
+<li>所以这个启发式对输入很敏感，有的样例可以秒出答案，而有的却要展开很多很多节点</li>
+</ul>
+</li>
+<li>$\sum_{i}w(a_i)$ 即对所有是1的点赋权重并相加<ul>
+<li>其中$a_i$是那些1的点，$w()$是一个考虑该点附近情况的一个权重函数</li>
+<li>理论上所有启发式都可以等价于这个形式，但是这个权重函数很难考虑出一个简单并且合适的</li>
+</ul>
+</li>
+</ul>
+<p>后来又得知了一个剪枝的方法，对于每个状态，只需要考虑<strong>包含锁盘上第一个1在内的12种翻转</strong>，这瞬间将每个状态的展开节点数降到很少，对于很大的锁盘也可以用可采纳的启发式解决了<br>而这个剪枝的想法也来源于对题目的观察：<strong>一个解的每个步骤都是可以任意调换顺序的</strong>，所以总能将它调换成翻转包括当前第一个1的顺序。由此可见对题目的分析还是很重要的</p>
+<p>以下运行结果全部采用这种剪枝为基础</p>
+<h3 id="运行结果总结"><a href="#运行结果总结" class="headerlink" title="运行结果总结"></a>运行结果总结</h3><p>最优解步数：</p>
+<table>
+<thead>
+<tr>
+<th>input0(5*5)</th>
+<th>input1(3*3)</th>
+<th>input2(4*4)</th>
+<th>input3(5*5)</th>
+<th>input4(5*5)</th>
+<th>input5(5*5)</th>
+<th>input6(9*9)</th>
+<th>input7(9*9)</th>
+<th>input8(10*10)</th>
+<th>input9(12*12)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+<td>11</td>
+<td>14</td>
+<td>16</td>
+<td>23</td>
+</tr>
+</tbody></table>
+<p>总展开节点数对比：</p>
+<ul>
+<li><p>$h_1$ （1的总数/3取上整）</p>
+<table>
+<thead>
+<tr>
+<th>input0(5*5)</th>
+<th>input1(3*3)</th>
+<th>input2(4*4)</th>
+<th>input3(5*5)</th>
+<th>input4(5*5)</th>
+<th>input5(5*5)</th>
+<th>input6(9*9)</th>
+<th>input7(9*9)</th>
+<th>input8(10*10)</th>
+<th>input9(12*12)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>292</td>
+<td>38</td>
+<td>13</td>
+<td>84</td>
+<td>348</td>
+<td>59</td>
+<td>4398</td>
+<td>3123</td>
+<td>太大了</td>
+<td>太大了</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>$h_4$ （1的2*2覆盖总数）</p>
+<table>
+<thead>
+<tr>
+<th>input0(5*5)</th>
+<th>input1(3*3)</th>
+<th>input2(4*4)</th>
+<th>input3(5*5)</th>
+<th>input4(5*5)</th>
+<th>input5(5*5)</th>
+<th>input6(9*9)</th>
+<th>input7(9*9)</th>
+<th>input8(10*10)</th>
+<th>input9(12*12)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>73</td>
+<td>19</td>
+<td>34</td>
+<td>32</td>
+<td>16</td>
+<td>11</td>
+<td>909</td>
+<td>243</td>
+<td>959</td>
+<td>2714</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>dijkstra</p>
+<table>
+<thead>
+<tr>
+<th>input0(5*5)</th>
+<th>input1(3*3)</th>
+<th>input2(4*4)</th>
+<th>input3(5*5)</th>
+<th>input4(5*5)</th>
+<th>input5(5*5)</th>
+<th>input6(9*9)</th>
+<th>input7(9*9)</th>
+<th>input8(10*10)</th>
+<th>input9(12*12)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2419</td>
+<td>37</td>
+<td>236</td>
+<td>1318</td>
+<td>1828</td>
+<td>1548</td>
+<td>太大了</td>
+<td>太大了</td>
+<td>太大了</td>
+<td>太大了</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<p>显然就算最差的A*算法的性能也比dijkstra好，因为它毕竟是带有启发信息的</p>
+<h2 id="exp1-2"><a href="#exp1-2" class="headerlink" title="exp1.2"></a>exp1.2</h2><h3 id="转化为约束满足问题"><a href="#转化为约束满足问题" class="headerlink" title="转化为约束满足问题"></a>转化为约束满足问题</h3><p>本题变量集合为每天的每个班次，值域集合为$\{0,1,…,N\}$</p>
+<p>将每一天的每一班次视作一个可取$\{0,1,…,N\}$的变量，其中i表示它被指派了阿姨i，0表示它未被指派</p>
+<p>定义几个约束：</p>
+<ul>
+<li>每天分为轮班次数个值班班次</li>
+<li>每个班次都分给⼀个宿管阿姨</li>
+<li>同⼀个宿管阿姨不能⼯作连续两个班次</li>
+<li>每个宿管阿姨在整个排班周期中，应⾄少被分配到$\lfloor \frac{DS}{N}\rfloor$次</li>
+</ul>
+<p>那么第一个约束说明了有 D * S 个变量，第二个约束说明该约束满足问题的结束标志是每个变量都被指派了非0取值，这两者可以不纳入约束满足问题中约束的考虑<br>剩余两个约束定义为 $g_1$ 和 $g_2$ ，其中 $g_1$ 是 <strong>二元约束</strong> ，$g_2$是 <strong>全局约束</strong> </p>
+<p>下面考虑怎么处理值班请求：<br>考虑到每一天的每一班次只能有一个赋值，所以 <strong>可以满足的请求数上界</strong> 是 $D * S$ </p>
+<h4 id="将值班请求作为约束优化"><a href="#将值班请求作为约束优化" class="headerlink" title="将值班请求作为约束优化"></a>将值班请求作为约束优化</h4><p>值班请求也可以视为约束：<br>对每一天的每一个班次，每个阿姨都有一个对应的请求，对应一个约束</p>
+<ul>
+<li>如果阿姨的请求为1，而该班次的指派是她时，此约束不违背，此请求满足</li>
+<li>如果阿姨的请求为1，而该班次的指派不是她时，此约束违背，此请求不满足</li>
+<li>如果阿姨的请求为0，那么该班次的指派无论是不是她，都不视为违背，此请求不满足</li>
+</ul>
+<p>（考虑到请求为0的约束无论班次指派，所以可以不考虑它们）</p>
+<p>而总共 $N * D * S$ 条值班请求中是1的部分，它们构成总请求约束集合 $Request$ ，每个约束都是 <strong>一元约束</strong><br>我们要最大化满足的请求，就是找到 $Request$ 集合的一个 <strong>最大的子集</strong> $R_1$ ，使得存在一个排班表，它满足 $R_1$ 中的所有约束以及上文的 $g_1$ 和 $g_2$ 约束，此时 $R_1$ 的大小即满足的请求数</p>
+<h4 id="将值班请求作为值域优化"><a href="#将值班请求作为值域优化" class="headerlink" title="将值班请求作为值域优化"></a>将值班请求作为值域优化</h4><p>考虑对某一天的某一班次，有阿姨$\{n_{i_1},…n_{i_l}\}$都在请求，那么将它分配给$N - \{n_{i_1},…n_{i_l}\}$中的阿姨显然是浪费；将它分配给$\{n_{i_1},…n_{i_l}\}$中的某一个阿姨$n_k$，则$\{n_{i_1},…n_{i_l}\}-n_k$的请求不会满足，$n_k$的请求得到满足，这对于该班次来说，已经是最大的满足请求数了</p>
+<p>所以可以用值班请求作为该班次的值域：<br>对于第$d$天的第$s$班次，有阿姨$\{n_{i_1}^{d,s},n_{i_2}^{d,s},…\}$都在请求，则设置该班次可被指派的值域为$\{0,n_{i_1}^{d,s},n_{i_2}^{d,s},…\}$（0表示尚未指派阿姨），在上面运行约束是$g_1$和$g_2$的CSP算法即可：</p>
+<ul>
+<li>如果有解，那么此时可以满足的请求数达到了上界$D*S$</li>
+<li>如果没解，那么为了安排值班表，得扩充某些班次的值域，（由于我们关注的是优化值班请求，而值班请求依赖于班次，所以扩充时直接扩充到$N$即可）<ul>
+<li>假设扩充了$k$个班次的所有情形CSP都无解，而扩充了$k+1$个班次的某个情形CSP有解，那么可满足的最大申请数$D*S-k-1$，该解就是最终的排班表</li>
+</ul>
+</li>
+</ul>
+<p>所以可以按照扩充的班次数运行<strong>广度优先搜索</strong></p>
+<p>比较两种方法：</p>
+<ul>
+<li>它们都是将CSP算法作为一个验证手段，通过尝试不同的约束或者值域的CSP，找到一个使得可满足的申请数最大的CSP</li>
+<li>将值班请求作为约束优化<ul>
+<li>改变约束实现起来比较麻烦</li>
+<li>对可满足的申请数<em>从小到大</em>搜索，不能保证搜到的第一个解是最优解</li>
+</ul>
+</li>
+<li>将值班请求作为值域优化<ul>
+<li>改变值域实现起来比较简单，可以使用同一套CSP算法模板</li>
+<li>对可满足的申请数<em>从大到小</em>搜索，可以保证搜到的第一个解就是最优解</li>
+</ul>
+</li>
+</ul>
+<p>而且对于本次实验样例，因为1的分布比较密集，所有可以满足的请求数都接近上界$D * S$，综上选择 <strong>将值班请求作为值域优化</strong> </p>
+<h3 id="CSP算法流程和实现"><a href="#CSP算法流程和实现" class="headerlink" title="CSP算法流程和实现"></a>CSP算法流程和实现</h3><p>维护一个状态结构体，里面包含在回溯搜索算法中当前状态每个班次的可用赋值和指派情况</p>
+<pre class="line-numbers language-none"><code class="language-none">struct Status
+&#123;
+    &#x2F;&#x2F;可用赋值表：共D*S*(N+1)，available[d][s][n]为真表示d,s的n赋值可用，n&#x3D;0不表示东西
+    vector&lt; vector&lt; vector&lt;bool&gt; &gt; &gt; available;
+    &#x2F;&#x2F;指派表：共D行S列取值0~N，d行s列的值表示第d天第s班次的指派，0表示未指派
+    vector&lt; vector&lt;short&gt; &gt; assign;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">回溯搜索 back_track(state)
+输入：约束条件、初始状态 
+输出：完全有效赋值 assign 或失败
+
+if state.assign 是完全有效赋值 then
+    return state.assign
+通过MRV选择一个未赋值变量 X
+选择一个 X 的所有可能变量的随机排序 D
+foreach var in D do
+    将指派 X 取 var 加入 assign，构造新状态 new_state
+    在 new_state 上运行前向检查，更新 new_state
+    if new_state.assign 是有效的 then
+        result &#x3D; back_track(new_state)
+        if result !&#x3D; failure then
+            return result
+return failure<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="何时使用全局约束"><a href="#何时使用全局约束" class="headerlink" title="何时使用全局约束"></a>何时使用全局约束</h4><p>回顾全局约束$g_2$：每个宿管阿姨在整个排班周期中，应⾄少被分配到$\lfloor \frac{DS}{N}\rfloor$次</p>
+<p>但是在求解CSP问题时，对每个阿姨，她的排班是逐渐被确定的，即排班数是 <em>由少到多增长</em> ，如果所有阿姨都还没有分配很多排班，那么该怎么确定这个排班达到了$\lfloor \frac{DS}{N}\rfloor$次的下界呢？</p>
+<p>一个简单的办法是把所有赋值都确定下来之后，再检查是否满足全局约束<br>这个函数被实现为<code>bool check_cons2(Status state)</code></p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//递归终点</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">check_finish</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span> <span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">check_cons2</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"finish!"</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+        state<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">else</span>
+    <span class="token punctuation">&#123;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"bad end!"</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>但是这个的性能非常差。我们放弃了<strong>早死早超生原则</strong>，而允许一些在赋值中途就能发现问题的赋值表走到最后</p>
+<p>可以选择一个能够在赋值中途发现问题的方法：考察工作最多的几个阿姨是否让其它阿姨不能达到最低工作标准<br>这个函数被实现为<code>bool check_cons2_mid(Status state)</code>，实现起来更加复杂了，但是效率提升显著</p>
+<p>还有一点：<strong>节点的赋值的展开顺序</strong>对性能也有很大影响：<br>譬如每个节点的可用赋值都是 1 ~ N ，并且每个节点的赋值展开都是按照 1 ~ N 的顺序尝试，那么递归运行<code>back_track</code>时，前几个节点会被依次赋值为<code>1，2，1，2，1，...</code>（因为它不违背约束$g_1$并且目前还没有违背$g_2$），但是这个赋值再往后有很大可能违背$g_2$，因为它用1，2太多了<br>那么有什么办法避免这种情况吗？答案是<strong>随机选择一个节点的赋值的展开顺序</strong>，即上面伪代码的<code>选择一个 X 的所有可能变量的随机排序 D</code>，这也是一种提前避免无效探索的剪枝</p>
+<h4 id="前向检查"><a href="#前向检查" class="headerlink" title="前向检查"></a>前向检查</h4><p>约束$g_1$是二元约束，非常适合约束传播，而$g_2$则不适合，故不约束传播</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//将新状态的d，s，n赋值进行弧相容检查</span>
+<span class="token comment">//只传播cons1</span>
+<span class="token comment">//递归进行，直到不能约束传播为止</span>
+<span class="token keyword">void</span> <span class="token function">forward_check</span><span class="token punctuation">(</span><span class="token keyword">short</span> d<span class="token punctuation">,</span> <span class="token keyword">short</span> s<span class="token punctuation">,</span> <span class="token keyword">short</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">//cons1中弧相容只涉及前后两个节点，注意跨天情况和边界情况（这里考虑s>=3）</span>
+    <span class="token keyword">short</span> d1<span class="token punctuation">,</span> s1<span class="token punctuation">,</span> d2<span class="token punctuation">,</span> s2<span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>d <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> s <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        available<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">short</span> only_n1 <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">count_available</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> only_n1<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> assign<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            assign<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> only_n1<span class="token punctuation">;</span>
+            <span class="token function">forward_check</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> only_n1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>d <span class="token operator">==</span> D<span class="token operator">-</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span> s <span class="token operator">==</span> S<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        available<span class="token punctuation">[</span>d<span class="token punctuation">]</span><span class="token punctuation">[</span>s<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">short</span> only_n1 <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">count_available</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span> s<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> only_n1<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> assign<span class="token punctuation">[</span>d<span class="token punctuation">]</span><span class="token punctuation">[</span>s<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            assign<span class="token punctuation">[</span>d<span class="token punctuation">]</span><span class="token punctuation">[</span>s<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> only_n1<span class="token punctuation">;</span>
+            <span class="token function">forward_check</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span> s<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> only_n1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>s <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        d1 <span class="token operator">=</span> d<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        s1 <span class="token operator">=</span> S<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        d2 <span class="token operator">=</span> d<span class="token punctuation">;</span>
+        s2 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>s <span class="token operator">==</span> S<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        d1 <span class="token operator">=</span> d<span class="token punctuation">;</span>
+        s1 <span class="token operator">=</span> s<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        d2 <span class="token operator">=</span> d<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+        s2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">else</span>
+    <span class="token punctuation">&#123;</span>
+        d1 <span class="token operator">=</span> d<span class="token punctuation">;</span>
+        s1 <span class="token operator">=</span> s<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        d2 <span class="token operator">=</span> d<span class="token punctuation">;</span>
+        s2 <span class="token operator">=</span> s<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//注销两个节点中n的可用性</span>
+    available<span class="token punctuation">[</span>d1<span class="token punctuation">]</span><span class="token punctuation">[</span>s1<span class="token punctuation">]</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    available<span class="token punctuation">[</span>d2<span class="token punctuation">]</span><span class="token punctuation">[</span>s2<span class="token punctuation">]</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token comment">//如果某个节点只有一个可用且未赋值，那么更新赋值</span>
+    <span class="token keyword">short</span> only_n1 <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">short</span> only_n2 <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">count_available</span><span class="token punctuation">(</span>d1<span class="token punctuation">,</span> s1<span class="token punctuation">,</span> only_n1<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> assign<span class="token punctuation">[</span>d1<span class="token punctuation">]</span><span class="token punctuation">[</span>s1<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        assign<span class="token punctuation">[</span>d1<span class="token punctuation">]</span><span class="token punctuation">[</span>s1<span class="token punctuation">]</span> <span class="token operator">=</span> only_n1<span class="token punctuation">;</span>
+        <span class="token function">forward_check</span><span class="token punctuation">(</span>d1<span class="token punctuation">,</span> s1<span class="token punctuation">,</span> only_n1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">count_available</span><span class="token punctuation">(</span>d2<span class="token punctuation">,</span> s2<span class="token punctuation">,</span> only_n2<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> assign<span class="token punctuation">[</span>d2<span class="token punctuation">]</span><span class="token punctuation">[</span>s2<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        assign<span class="token punctuation">[</span>d2<span class="token punctuation">]</span><span class="token punctuation">[</span>s2<span class="token punctuation">]</span> <span class="token operator">=</span> only_n2<span class="token punctuation">;</span>
+        <span class="token function">forward_check</span><span class="token punctuation">(</span>d2<span class="token punctuation">,</span> s2<span class="token punctuation">,</span> only_n2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在不考虑边界条件和跨天情况时，要将d天s班次的n赋值约束传播到它前后两个班次，即注销掉<code>available</code>中它们的可用性<br>如果注销掉可用性时它刚好只有一个赋值可用，那么就可以用这个来赋值，并递归地触发下一个约束传播</p>
+<h4 id="最小剩余值启发式"><a href="#最小剩余值启发式" class="headerlink" title="最小剩余值启发式"></a>最小剩余值启发式</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//MRV启发式，返回目前的可用赋值最少的未赋值节点d，s</span>
+<span class="token keyword">void</span> <span class="token function">MRV_find</span><span class="token punctuation">(</span><span class="token keyword">short</span> <span class="token operator">&amp;</span>d_find<span class="token punctuation">,</span> <span class="token keyword">short</span> <span class="token operator">&amp;</span>s_find<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> count_min <span class="token operator">=</span> N<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">short</span> i_find<span class="token punctuation">,</span> j_find<span class="token punctuation">;</span>
+    <span class="token keyword">short</span> nouse<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">short</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>D<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">short</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">&lt;</span>S<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token comment">//遍历assign表找未指派的节点</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>assign<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#123;</span>
+                <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token function">count_available</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> nouse<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>count <span class="token operator">&lt;</span> count_min<span class="token punctuation">)</span>
+                <span class="token punctuation">&#123;</span>
+                    count_min <span class="token operator">=</span> count<span class="token punctuation">;</span>
+                    i_find <span class="token operator">=</span> i<span class="token punctuation">;</span>
+                    j_find <span class="token operator">=</span> j<span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    d_find <span class="token operator">=</span> i_find<span class="token punctuation">;</span>
+    s_find <span class="token operator">=</span> j_find<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>依据当前<code>assign</code>表寻找未赋值的节点，并统计它们的可用赋值数，最终返回可用赋值最少的节点</p>
+<h4 id="将值班请求作为值域优化-1"><a href="#将值班请求作为值域优化-1" class="headerlink" title="将值班请求作为值域优化"></a>将值班请求作为值域优化</h4><p>这里涉及到两个部分：</p>
+<ul>
+<li>用值班请求初始化CSP中每个节点的值域</li>
+<li>在当前CSP无解时拓展哪个节点的值域</li>
+</ul>
+<p>实现了类<code>Request</code>，其中<code>r</code>记录了各个值班请求</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//请求表 N*D行，每行S个元素表示请求</span>
+<span class="token keyword">struct</span> <span class="token class-name">Request</span>
+<span class="token punctuation">&#123;</span> 
+    vector<span class="token operator">&lt;</span> vector<span class="token operator">&lt;</span><span class="token keyword">bool</span><span class="token operator">></span> <span class="token operator">></span> r<span class="token punctuation">;</span>
+    <span class="token function">Request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+    <span class="token comment">//设置状态S的可用赋值</span>
+    <span class="token keyword">void</span> <span class="token function">set_available</span><span class="token punctuation">(</span>Status <span class="token operator">&amp;</span>State<span class="token punctuation">)</span>
+    <span class="token comment">//拓展状态S的可用赋值</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+Request Req_in<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在读入文件时初始化<code>Req_in</code>，然后调用<code>set_available</code>初始化CSP中每个节点的值域</p>
+<p>拓展节点值域时，因为我们希望拓展后尽快找到有解的CSP，所以优先拓展值域最小的节点，这部分也可以复用MRV启发式的代码</p>
+<h3 id="运行结果（以input0为例）"><a href="#运行结果（以input0为例）" class="headerlink" title="运行结果（以input0为例）"></a>运行结果（以input0为例）</h3><p>有意思的是，input0是唯一一个可满足的请求数达不到上限 $D * S$ 的样例，所以按照 <em>用请求初始化值域</em> 的方法来做，会发现第4天的第0个班次没有值域<br>此时需要拓展该班次的值域为1 ~ N并重新运行即可<br>此时有解：</p>
+<pre class="line-numbers language-none"><code class="language-none">D0: 1 2 1
+D1: 2 3 1
+D2: 3 2 1
+D3: 3 1 2
+D4: 3 2 1
+D5: 3 2 3
+D6: 1 2 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>按照前面论证的，在每个节点的值域都不拓展的时候无解，而拓展了一个节点的值域就有解的，说明其最大的可满足请求数 $D * S-1$ </p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">brh</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://baorunhui.github.io/2023/08/07/ai-homework/">https://baorunhui.github.io/2023/08/07/ai-homework/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">brh</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">我，打钱</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/08/09/colab/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="colab">
+                        
+                        <span class="card-title">colab</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-09
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            brh
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/08/04/new-start/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="新的开始">
+                        
+                        <span class="card-title">新的开始</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-04
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/how-to%E7%B3%BB%E5%88%97/" class="post-category">
+                                    how-to系列
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
+                    </a>
+                    
+                    <a href="/tags/markdown/">
+                        <span class="chip bg-color">markdown</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
+
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022-2024</span>
+            
+            <a href="/about" target="_blank">brh</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">12.1k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2022";
+                        var startMonth = "1";
+                        var startDate = "20";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/baorunhui" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1395558252@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1395558252" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1395558252" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
